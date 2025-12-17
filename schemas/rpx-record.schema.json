@@ -1,0 +1,101 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://ssi-protocol.org/schemas/rpx-record.json",
+  "title": "SSI RPX Record (Reflective Provenance Extension)",
+  "description": "Canonical schema for SSI decision audit records. Defines the normative format for tamper-evident decision provenance as specified in SPEC.md and AUDIT.md.",
+  "type": "object",
+  "required": [
+    "record_id",
+    "timestamp",
+    "previous_hash",
+    "decision_type",
+    "agent_id",
+    "outcome",
+    "context_hash",
+    "policy_version",
+    "record_hash"
+  ],
+  "properties": {
+    "record_id": {
+      "type": "string",
+      "description": "Unique identifier for this decision record. MUST be globally unique within the system.",
+      "pattern": "^[a-zA-Z0-9_-]{8,64}$",
+      "examples": ["rec_2025-12-17_abc123def456"]
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp (UTC) when decision was evaluated. MUST use RFC 3339 format with microsecond precision.",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{6})?Z$",
+      "examples": ["2025-12-17T14:23:45.123456Z"]
+    },
+    "previous_hash": {
+      "type": "string",
+      "description": "SHA-256 hash of the previous record in the chain. Genesis records use a known initialization hash (see AUDIT.md).",
+      "pattern": "^[a-f0-9]{64}$",
+      "examples": ["e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"]
+    },
+    "decision_type": {
+      "type": "string",
+      "description": "Classification of decision according to DECISIONS.md ontology. MUST match constitutional decision types.",
+      "enum": [
+        "authorization.action",
+        "authorization.resource",
+        "safety.constraint",
+        "safety.escalation",
+        "audit.verification",
+        "policy.evaluation"
+      ],
+      "examples": ["authorization.action"]
+    },
+    "agent_id": {
+      "type": "string",
+      "description": "Identifier of the autonomous agent requesting authorization. MUST be unique within deployment.",
+      "minLength": 1,
+      "maxLength": 255,
+      "examples": ["agent-trading-001", "autonomous-vehicle-fleet-23"]
+    },
+    "outcome": {
+      "type": "string",
+      "description": "Decision outcome as defined in SPEC.md. MUST be one of the constitutional outcomes.",
+      "enum": ["ALLOW", "DENY", "ESCALATE"],
+      "examples": ["ALLOW"]
+    },
+    "context_hash": {
+      "type": "string",
+      "description": "SHA-256 hash of the decision context (agent state, action parameters, environmental factors). Enables verification without exposing sensitive data.",
+      "pattern": "^[a-f0-9]{64}$",
+      "examples": ["a7ffc6f8bf1ed76651c14756a061d662f580ff4de43b49fa82d80a4b80f8434a"]
+    },
+    "policy_version": {
+      "type": "string",
+      "description": "Version identifier of the policy envelope used for evaluation. MUST be semantic version or equivalent.",
+      "pattern": "^[a-zA-Z0-9._-]+$",
+      "examples": ["1.2.3", "v2.0.0-prod", "policy-20251217"]
+    },
+    "record_hash": {
+      "type": "string",
+      "description": "SHA-256 hash of this record's canonical form (alphabetical keys, no whitespace, UTF-8). Self-integrity verification.",
+      "pattern": "^[a-f0-9]{64}$",
+      "examples": ["5d41402abc4b2a76b9719d911017c592"]
+    },
+    "action_type": {
+      "type": "string",
+      "description": "Optional: Human-readable action classification (e.g., 'trade.order.place', 'vehicle.lane.change').",
+      "examples": ["trade.order.place", "healthcare.prescription.approve"]
+    },
+    "reason": {
+      "type": "string",
+      "description": "Optional: Human-readable explanation for the outcome. Non-normative informational field.",
+      "maxLength": 1000,
+      "examples": ["Policy rule 'max_notional' triggered: 5000 > 3000"]
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Optional: Implementation-specific metadata. Not included in canonical hash computation.",
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": false,
+  "$comment": "Canonical form for hash computation: alphabetical key order, no whitespace, UTF-8 encoding, exclude 'metadata' field. See AUDIT.md §3.2 for hash computation rules."
+}

@@ -1,0 +1,169 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://ssi-protocol.org/schemas/compliance-assertion.json",
+  "title": "SSI Compliance Assertion",
+  "description": "Portable compliance badge for SSI systems. Enables trust claims backed by verification evidence and auditor attestations.",
+  "type": "object",
+  "required": [
+    "assertion_id",
+    "issued_timestamp",
+    "system_identifier",
+    "compliance_level",
+    "validity_period",
+    "issuer"
+  ],
+  "properties": {
+    "assertion_id": {
+      "type": "string",
+      "description": "Unique identifier for this compliance assertion (globally unique).",
+      "pattern": "^[a-zA-Z0-9_-]{8,64}$",
+      "examples": ["assertion_L2_prod_2025Q4_abc123"]
+    },
+    "issued_timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp (UTC) when this assertion was issued.",
+      "examples": ["2025-12-17T16:00:00.000000Z"]
+    },
+    "system_identifier": {
+      "type": "string",
+      "description": "Identifier of the system for which compliance is asserted.",
+      "examples": ["trading-system-prod", "autonomous-vehicle-fleet-23"]
+    },
+    "compliance_level": {
+      "type": "string",
+      "description": "SSI compliance level as defined in COMPLIANCE.md. L1 = Basic, L2 = Standard, L3 = Full.",
+      "enum": ["L1", "L2", "L3"],
+      "examples": ["L2"]
+    },
+    "validity_period": {
+      "type": "object",
+      "description": "Time period during which this assertion is valid.",
+      "required": ["start", "end"],
+      "properties": {
+        "start": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Start of validity period (inclusive)."
+        },
+        "end": {
+          "type": "string",
+          "format": "date-time",
+          "description": "End of validity period (exclusive). After this time, re-verification required."
+        }
+      }
+    },
+    "issuer": {
+      "type": "object",
+      "description": "Entity that issued this compliance assertion (auditor, certification body).",
+      "required": ["name", "role"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of issuing entity.",
+          "examples": ["Independent Audit Corp", "Regulatory Authority ABC"]
+        },
+        "role": {
+          "type": "string",
+          "enum": ["auditor", "certification-body", "regulatory-authority", "self-assessment"],
+          "description": "Role of issuer. 'self-assessment' means operator self-certified (lower trust)."
+        },
+        "certification": {
+          "type": "string",
+          "description": "Issuer's own credentials/certification.",
+          "examples": ["ISO 27001 Certified Auditor", "Accredited SSI Certification Body"]
+        },
+        "contact": {
+          "type": "string",
+          "description": "Contact information for issuer verification.",
+          "examples": ["audit@example.com", "https://regulator.gov/verify"]
+        }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "description": "Evidence supporting this compliance assertion.",
+      "properties": {
+        "verification_report_id": {
+          "type": "string",
+          "description": "ID of verification report that supports this assertion."
+        },
+        "verification_report_url": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL where verification report can be accessed."
+        },
+        "chain_proof_hash": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$",
+          "description": "Hash of chain proof used for verification."
+        },
+        "record_count": {
+          "type": "integer",
+          "description": "Number of records verified during assessment.",
+          "minimum": 0
+        },
+        "test_results": {
+          "type": "array",
+          "description": "Conformance test results.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "test_name": {"type": "string"},
+              "status": {"type": "string", "enum": ["pass", "fail", "skip"]},
+              "details": {"type": "string"}
+            }
+          }
+        }
+      }
+    },
+    "constitutional_guarantees": {
+      "type": "object",
+      "description": "Status of constitutional guarantees (SPEC.md §2).",
+      "properties": {
+        "rpx_records": {"type": "boolean", "description": "§2.1: Every decision has a record"},
+        "fail_closed": {"type": "boolean", "description": "§2.2: Fail-closed by default"},
+        "human_authority": {"type": "boolean", "description": "§2.3: Human authority preserved"},
+        "hash_chain": {"type": "boolean", "description": "§2.4: Hash chain integrity"},
+        "context_bound": {"type": "boolean", "description": "§2.5: Decisions are context-bound"}
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "description": "Known limitations or caveats of this compliance assertion.",
+      "items": {"type": "string"},
+      "examples": [
+        "Assertion based on sample verification (500 records out of 10,000)",
+        "Policy correctness not assessed (only infrastructure compliance)"
+      ]
+    },
+    "badge_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL to visual badge/seal for display on websites.",
+      "examples": ["https://ssi-protocol.org/badges/L2-2025Q4-abc123.svg"]
+    },
+    "issuer_signature": {
+      "type": "string",
+      "description": "Cryptographic signature of issuer attesting to this assertion (implementation-specific format).",
+      "examples": ["MEUCIQDxxx..."]
+    },
+    "revocation_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL to check if this assertion has been revoked.",
+      "examples": ["https://issuer.example.com/revocation/assertion_id"]
+    },
+    "renewal_required": {
+      "type": "boolean",
+      "description": "Whether this assertion requires periodic renewal (true for time-limited certifications)."
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Implementation-specific metadata.",
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": false,
+  "$comment": "Compliance assertions make trust portable. Third parties can verify assertions by checking evidence, issuer credentials, and cryptographic signatures. Assertions expire and require renewal to ensure ongoing compliance."
+}
