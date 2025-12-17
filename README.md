@@ -99,8 +99,13 @@ Read the [constitutional documents](#constitutional-documents) to understand SSI
 **For Implementers:**  
 - Read [IMPLEMENTATION.md](IMPLEMENTATION.md) for operational guidance
 - Review [REFERENCE_IMPLEMENTATIONS.md](REFERENCE_IMPLEMENTATIONS.md) for maintained reference code
+- **Check [schemas/](schemas/)** for artifact schemas (RPX records, chain proofs, verification reports)
 - See [USE_CASES.md](USE_CASES.md) for domain-specific applications
 - Check [ROADMAP.md](ROADMAP.md) for ecosystem development timeline
+
+**For Auditors & Verifiers:**  
+- Review [schemas/](schemas/) for verification artifact formats (chain proofs, compliance assertions)
+- See [COMPLIANCE.md](COMPLIANCE.md) for certification criteria
 
 **For Contributors:**  
 See [CONTRIBUTING.md](CONTRIBUTING.md) for RFC process and governance model.
@@ -124,8 +129,10 @@ Constitutional guarantees cannot be weakened. Backward compatibility is mandator
 
 **Current Version:** v1.0.0-invariant  
 **Constitutional Docs:** Complete (SPEC, DECISIONS, AUDIT, FAILURE, COMPLIANCE)  
+**Artifact Schemas:** Complete (RPX records, chain proofs, verification reports, compliance assertions)  
 **Reference Implementation:** Available (SSI Kernel, SSI Gateway)  
-**SDKs:** TypeScript (in development), Python/Rust (planned)
+**SDKs:** TypeScript (in development), Python/Rust (planned)  
+**Verification Tooling:** Planned (ssi-verify CLI, v1.1.0 - Q2 2026)
 
 ---
 
