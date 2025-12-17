@@ -1,0 +1,6 @@
+{
+  "type": "module",
+  "dependencies": {
+    "canonicalize": "^2.0.0"
+  }
+}

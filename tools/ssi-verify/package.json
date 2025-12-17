@@ -9,7 +9,9 @@
   "scripts": {
     "build": "tsc",
     "dev": "ts-node src/index.ts",
-    "verify": "node dist/index.js"
+    "verify": "node dist/index.js",
+    "test:vectors": "node src/test-vectors.mjs",
+    "test": "npm run test:vectors"
   },
   "keywords": ["ssi", "verification", "audit", "chain", "provenance"],
   "author": "SSI Protocol",

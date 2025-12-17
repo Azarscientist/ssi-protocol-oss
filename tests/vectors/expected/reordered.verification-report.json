@@ -1,0 +1,61 @@
+{
+  "$schema": "../../schemas/verification-report.schema.json",
+  "report_id": "report-1766008102194-qu561w0z",
+  "timestamp": "2025-12-17T21:48:22.194Z",
+  "chain_id": "chain-rec_2025-12-01_000",
+  "verification_scope": {
+    "records_verified": 10,
+    "time_range": {
+      "earliest": "2025-12-01T00:00:00.000000Z",
+      "latest": "2025-12-01T00:09:00.000000Z"
+    }
+  },
+  "integrity_status": "INCOMPLETE",
+  "compliance_details": {
+    "constitutional_guarantees": {
+      "rpx_records_present": true,
+      "fail_closed_verified": false,
+      "human_escalation_available": false,
+      "hash_chain_intact": false,
+      "context_captured": true
+    },
+    "compliance_level": null,
+    "notes": "Chain integrity failed: INCOMPLETE. Cannot assess compliance level."
+  },
+  "tamper_evidence": [
+    {
+      "record_id": "rec_2025-12-01_007",
+      "tampering_type": "broken-link",
+      "description": "Record 6 previous_hash (83903a726e54aed4a4ec610a7fa4316e84ff7167eb515b0a2d6971b1911460ba) does not match record 5 hash (059ff481e142f732838185f38e8baeae825e69fb8b7f726a2c78ff1a96c1bb06)",
+      "position": 6
+    },
+    {
+      "record_id": "rec_2025-12-01_006",
+      "tampering_type": "broken-link",
+      "description": "Record 7 previous_hash (059ff481e142f732838185f38e8baeae825e69fb8b7f726a2c78ff1a96c1bb06) does not match record 6 hash (4c5c549607ced6c88dd5b264d958d52a257b7464e7090c343178f277cfc61128)",
+      "position": 7
+    },
+    {
+      "record_id": "rec_2025-12-01_006",
+      "tampering_type": "timestamp-violation",
+      "description": "Record 7 timestamp (2025-12-01T00:06:00.000000Z) is before record 6 timestamp (2025-12-01T00:07:00.000000Z) - possible reordering",
+      "position": 7
+    },
+    {
+      "record_id": "rec_2025-12-01_008",
+      "tampering_type": "broken-link",
+      "description": "Record 8 previous_hash (4c5c549607ced6c88dd5b264d958d52a257b7464e7090c343178f277cfc61128) does not match record 7 hash (83903a726e54aed4a4ec610a7fa4316e84ff7167eb515b0a2d6971b1911460ba)",
+      "position": 8
+    }
+  ],
+  "chain_metadata": {
+    "genesis_hash": "44c77ce80046ffcd8f5dfa6fde95b7d7f48849fa796eb1d0c2a272490128de24",
+    "current_head": "6132b25af82e9100223d78209ef60b4216ded185859eca13c2a1f165e7f80dbe",
+    "decision_types": [
+      "authorization.action",
+      "safety.constraint",
+      "policy.evaluation"
+    ],
+    "agent_count": 3
+  }
+}
