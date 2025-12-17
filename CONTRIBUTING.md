@@ -1,124 +1,224 @@
-# Contributing to the SSI Protocol
+# Contributing to SSI Protocol
 
-First off – thank you for your interest in contributing to the Sovereign Synthetic Intelligence (SSI) Protocol.  
-SSI is intended to become a shared, open infrastructure layer for AI governance and safety.
+**Thank you for your interest in contributing to SSI Protocol!**
 
-This document explains how to:
-- Ask questions or file issues
-- Propose changes to the protocol via RFCs
-- Contribute code, docs, or reference implementations
-- Participate in working groups (future)
+SSI is a **constitutional standard**, which means different types of contributions follow different processes:
 
 ---
 
-## 1. Questions & Issues
+## Types of Contributions
 
-If you have a question, find a bug, or want to request a feature:
+### 1. Implementation Improvements (Reference Code)
 
-1. Check existing issues to see if it's already being discussed.
-2. If not, open a new GitHub Issue with:
-   - Clear title
-   - Description of the problem or question
-   - Steps to reproduce (if applicable)
-   - Any logs, screenshots, or links that help explain the context
+**What:** Bug fixes, performance improvements, SDK development  
+**Where:** `reference/kernel`, `reference/gateway`, `sdks/`  
+**Process:** Standard GitHub PR
 
-Please tag issues with:
-- `protocol`
-- `docs`
-- `reference-impl`
-- `governance`
-as appropriate.
+**Steps:**
+1. Fork the repository
+2. Create a feature branch (`git checkout -b fix/issue-description`)
+3. Make your changes
+4. Run tests: `npm test` (or language-specific test command)
+5. Submit PR with description of changes
+6. Respond to code review feedback
 
----
-
-## 2. Proposing Changes via RFCs
-
-### ⚠️ RFC Process Status: Pre-Governance Phase
-
-**Current state:** SSI accepts **informational and experimental RFCs** for archival purposes only. No decision authority exists yet.
-
-See [`rfcs/README.md`](./rfcs/README.md) for complete details.
-
-**Important:**
-- No governance structure is operational
-- Submissions are archived, not approved
-- No implementation commitments are made
-- This is a signal collection phase
-
-### Quick Start (Non-Binding Submissions)
-
-1. Copy `rfcs/0000-template.md`
-2. Fill in all required sections
-3. Submit PR with title: `RFC: [Your Title]`
-4. Add label: `rfc-informational` or `rfc-experimental`
-5. Engage in community discussion
-
-**Current status:** 0 RFCs submitted. Governance formation depends on external pull.
+**Requirements:**
+- Tests pass
+- Code style matches existing patterns
+- Documentation updated (if public APIs change)
+- Constitutional impact declared (`BREAKING`, `FEATURE`, or `FIX`)
 
 ---
 
-## 3. Code & Documentation Contributions
+### 2. Documentation & Tooling
 
-We welcome contributions in these areas:
+**What:** Guides, examples, tutorials, compliance tooling, CLI utilities  
+**Where:** `docs/`, `tools/`, supporting markdown files  
+**Process:** Discussion + PR
 
-- Protocol documentation (`/docs`)
-- Website and developer portal (`/app`, `/components`)
-- Reference implementations (`/reference`)
-- SDKs and tooling
-- Safety and security analyses
+**Steps:**
+1. Open GitHub Discussion explaining the addition
+2. Wait for maintainer feedback (~3-5 days)
+3. Submit PR with implementation
+4. Respond to review
 
-### Pull Request Guidelines
-
-1. Fork the repo and create a feature branch:
-   ```bash
-   git checkout -b feature/my-change
-   ```
-
-2. Make your changes.
-3. Ensure the project builds:
-   ```bash
-   npm install
-   npm run build
-   ```
-
-4. Commit with a clear message:
-   ```bash
-   git commit -m "feat: describe concise change"
-   ```
-
-5. Open a Pull Request against `main`:
-   * Describe the motivation and what changed
-   * Link to any related issues or RFCs
-
-Small, focused PRs are easier to review and merge.
+**Non-normative docs** (USE_CASES.md, IMPLEMENTATION.md, etc.) can be updated via PR without RFC.
 
 ---
 
-## 4. Working Groups (Future)
+### 3. Constitutional Changes (RFC Required)
 
-**Status:** Planned but not yet operational.
+**What:** Changes to SPEC.md, DECISIONS.md, AUDIT.md, FAILURE.md, COMPLIANCE.md  
+**Process:** RFC (Request for Comments)
 
-The SSI Protocol is designed to be maintained by domain-specific working groups (e.g., trading, healthcare, content moderation, safety, multi-agent systems).
+**⚠️ Constitutional changes require multi-stakeholder consensus ⚠️**
 
-Until formal working groups are established, you can:
+**Steps:**
+1. Open GitHub Discussion with `[RFC]` prefix
+2. Describe:
+   - **Problem:** What constitutional gap exists?
+   - **Proposal:** What change do you propose?
+   - **Impact:** What breaks? What transitions are needed?
+   - **Rationale:** Why is this necessary?
+3. **30-day review period** (minimum)
+4. Multi-stakeholder feedback (regulators, implementers, auditors)
+5. Maintainer decision (approved/rejected/deferred)
+6. If approved: Implementation PR + transition timeline
 
-* Use GitHub issues and discussions for technical proposals
-* Reference specific domains in issue titles and tags
-* Submit informational RFCs describing domain-specific patterns
+**Examples of RFC-required changes:**
+- New decision types in DECISIONS.md
+- RPX record format changes in SPEC.md
+- Compliance level criteria updates in COMPLIANCE.md
+- Fail-closed semantics modifications in FAILURE.md
 
-Once governance structures are formed, details will be published in:
-
-* `docs/governance/working-groups.md`
-* The SSI Governance section of the website
-
-**Timeline:** Unknown. Depends on ecosystem adoption and external pull.
+**Examples of non-RFC changes:**
+- Typo fixes in constitutional docs (PR directly)
+- Clarifications that don't change semantics (Discussion + PR)
+- Implementation examples in docs/ (PR directly)
 
 ---
 
-## 5. Code of Conduct
+## Backward Compatibility
 
-All contributors are expected to follow our [Code of Conduct](./CODE_OF_CONDUCT.md).
+**Invariant Rule:** Constitutional guarantees cannot be weakened.
 
-If you experience or witness unacceptable behavior, please contact:
+**Major Version Transitions (2.0, 3.0):**
+- Require 12-24 months notice
+- Backward compatibility maintained during transition
+- Breaking changes must have clear migration path
 
-`contact@ssi-protocol.org`
+**Minor Version Updates (1.1, 1.2):**
+- Additive only (new features, tooling, docs)
+- No breaking changes to constitutional guarantees
+
+**Patch Updates (1.0.1, 1.0.2):**
+- Bug fixes, typos, clarifications
+- No semantic changes
+
+---
+
+## Code of Conduct
+
+SSI Protocol follows standard open source etiquette:
+
+**Expected:**
+- Professional, respectful communication
+- Technical merit-based discussions
+- Constructive feedback
+- Focus on constitutional guarantees, not implementation preferences
+
+**Not Acceptable:**
+- Personal attacks or harassment
+- Off-topic discussions in technical threads
+- Demanding features without RFC process
+- Circumventing governance (e.g., bypassing 30-day review)
+
+**Enforcement:** Maintainers may lock threads, hide comments, or block users who violate these guidelines.
+
+---
+
+## PR Guidelines
+
+**Before submitting:**
+- [ ] Tests pass (`npm test` or equivalent)
+- [ ] Code follows existing style
+- [ ] Documentation updated (if APIs changed)
+- [ ] Constitutional impact declared:
+  - `BREAKING`: Requires RFC
+  - `FEATURE`: New capability (minor version)
+  - `FIX`: Bug fix (patch version)
+  - `DOCS`: Documentation only
+  - `CHORE`: Tooling/build/refactor (no user impact)
+
+**Commit Message Format:**
+```
+type(scope): brief description
+
+- Detailed explanation (if needed)
+- Links to relevant issues/discussions
+- Constitutional impact: NONE | FIX | FEATURE | BREAKING
+```
+
+**Example:**
+```
+feat(kernel): Add policy caching for high-throughput scenarios
+
+- Implements LRU cache for policy evaluation
+- Reduces latency by ~40% for repeated decisions
+- No constitutional impact (internal optimization)
+
+Constitutional impact: NONE
+Closes #123
+```
+
+---
+
+## Testing
+
+**Unit Tests:**
+- Run locally: `npm test`
+- Must pass before PR approval
+
+**Conformance Tests:**
+- Located in `tests/conformance/`
+- Verify constitutional guarantees
+- Run automatically in CI
+
+**Integration Tests:**
+- Test Gateway + Kernel interaction
+- Verify hash chain integrity
+- Run in CI on PR submission
+
+**If you're unsure how to test your change, ask in GitHub Discussions.**
+
+---
+
+## Development Setup
+
+**Prerequisites:**
+- Node.js 18+ (for JavaScript implementations)
+- PostgreSQL 14+ (for Gateway)
+- Git
+
+**Setup:**
+```bash
+# Clone the repository
+git clone https://github.com/YOUR_ORG/ssi-protocol-oss.git
+cd ssi-protocol-oss
+
+# Install dependencies
+npm install
+
+# Run tests
+npm test
+
+# Start reference implementations (see IMPLEMENTATION.md)
+cd reference/gateway && npm start
+cd reference/kernel && npm start
+```
+
+---
+
+## Release Process
+
+**Maintainers handle releases.** Contributors do not need to worry about versioning.
+
+**Process:**
+1. Maintainer tags release (`v1.1.0`)
+2. CI builds and tests
+3. GitHub Release created with changelog
+4. npm packages published (SDKs)
+5. Announcement in Discussions
+
+---
+
+## Questions?
+
+**Implementation questions:** [GitHub Issues](https://github.com/YOUR_ORG/ssi-protocol-oss/issues)  
+**RFC proposals:** [GitHub Discussions](https://github.com/YOUR_ORG/ssi-protocol-oss/discussions)  
+**Security:** See [SECURITY.md](SECURITY.md)
+
+---
+
+**SSI Protocol is a community-driven constitutional standard.**  
+**Your contributions help make AI governance transparent, auditable, and independently verifiable.**
